@@ -450,13 +450,13 @@ namespace Obloq_http {
 	 //% weight=90 group="04_mqtt"
     //% blockId=connect_to_mqtt blockGap=5
     //% expandableArgumentMode"toggle" inlineInputMode=inline
-    //% block="send data to IFTTT to trig other event:| server address: %address| Port: %port |User: %user|Password: %password "
+    //% block="connect to mqtt :| server address: %address| Port: %port |User: %user|Password: %password_user "
 	
-	 export function sendToMQtt (address:string, port:number,user:string,password:string){
+	 export function sendToMQtt (address:string, port:number,user:string,password_user:string){
 		 
-		  obloqWriteString("|4|1|1|" + address + "|" + port + "|" + user + "|" + password + "|\r")
+		  obloqWriteString("|4|1|1|" + address + "|" + port + "|" + user + "|" + password_user + "|\r")
 		  
-		  
+		   basic.showIcon(IconNames.Yes)
 		 
 		 
 		 
