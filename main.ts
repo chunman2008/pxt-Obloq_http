@@ -466,11 +466,11 @@ namespace Obloq_http {
   //% weight=89 group="05_subcrible"
     //% blockId=subcrible_topic  blockGap=5
     //% expandableArgumentMode"toggle" inlineInputMode=inline
-    //% block="subcrible_topic :| Topic: %topic "
-	 export function subcrible (topic:string){
+    //% block="subcrible_topic :| Topic: %topic |Message: % message "
+	 export function subcrible_publish (topic:string){
 		 
-        obloqWriteString("|4|1|2|" + topic + "|\r")
-        
+       
+        obloqWriteString("|4|1|3|" + topic + "|" + message + "|\r")
          basic.showIcon(IconNames.Yes)
        
    }
