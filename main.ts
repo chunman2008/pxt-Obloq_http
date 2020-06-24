@@ -390,12 +390,12 @@ namespace Obloq_http {
 		 
 		 
      } 
-     //% weight=80 group="06_topic"
-    //% blockId=subcrible_publish blockGap=5
+     //% weight=80 group="06_subscrible_topic"
+    //% blockId=subcrible blockGap=5
     //% expandableArgumentMode"toggle" inlineInputMode=inline
-    //% block="topic :| name: %topic"
+    //% block="subcrible :| name: %topic"
 
-	 export function subcrible_publish (topic:string){
+	 export function subcrible (topic:string){
         Obloq_serial_init()
         obloqWriteString("|4|1|2|" +topic + "|\r")
 
@@ -403,6 +403,23 @@ namespace Obloq_http {
          basic.showIcon(IconNames.Yes)
        
    }
+
+
+        //% weight=79 group="07_publish"
+    //% blockId=publish blockGap=5
+    //% expandableArgumentMode"toggle" inlineInputMode=inline
+    //% block="publish :| name: %topic |Message: %message"
+
+	 export function publish (topic:string,message:string){
+        Obloq_serial_init()
+    
+        obloqWriteString("|4|1|3|" + topic + "|" + message + "|\r")
+
+         basic.showIcon(IconNames.Yes)
+       
+   }
+
+
 	
 	
 }
