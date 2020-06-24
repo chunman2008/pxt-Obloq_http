@@ -1,6 +1,6 @@
 /**
  *Obloq implementation method.
- .
+ ................
  */
 //% weight=10 color=#096670 icon="\uf1eb" block="Obloq_http"
 //% groups=["04_IFTTT","03_ThingSpeak", "02_Weather", "01_System"]
@@ -462,7 +462,18 @@ namespace Obloq_http {
 		 
 		 
 		 
-	 } 
+     } 
+  //% weight=89 group="05_subcrible"
+    //% blockId=subcrible_topic  blockGap=5
+    //% expandableArgumentMode"toggle" inlineInputMode=inline
+    //% block="subcrible_topic :| server address: %address| Port: %port |User: %user|Password: %password_user "
+	 export function subcrible (address:string, port:number,user:string,password_user:string){
+		 
+        obloqWriteString("|4|1|1|" + address + "|" + port + "|" + user + "|" + password_user + "|\r")
+        
+         basic.showIcon(IconNames.Yes)
+       
+   }
 	
 	
 }
