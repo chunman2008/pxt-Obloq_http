@@ -380,6 +380,7 @@ namespace Obloq_http {
     //% block="connect to mqtt :| server address: %address| Port: %port |User: %user|Password: %password_user "
 	
 	 export function sendToMQtt (address:string, port:number,user:string,password_user:string){
+        Obloq_serial_init()
 		 
 		  obloqWriteString("|4|1|1|" + address + "|" + port + "|" + user + "|" + password_user + "|\r")
 		  
@@ -392,12 +393,12 @@ namespace Obloq_http {
      //% weight=80 group="06_topic"
     //% blockId=subcrible_publish blockGap=5
     //% expandableArgumentMode"toggle" inlineInputMode=inline
-    //% block="topic :| name: %topic| message: %message "
+    //% block="topic :| name: %topic"
 
-	 export function subcrible_publish (topic:string,message:string){
-		 
+	 export function subcrible_publish (topic:string){
+        Obloq_serial_init()
         obloqWriteString("|4|1|2|" + topic + "|\r")
-        obloqWriteString("|4|1|3|" + topic + "|" + message + "|\r")
+
 
          basic.showIcon(IconNames.Yes)
        
