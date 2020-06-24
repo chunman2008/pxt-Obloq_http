@@ -467,7 +467,7 @@ namespace Obloq_http {
     //% blockId=subcrible_topic  blockGap=5
     //% expandableArgumentMode"toggle" inlineInputMode=inline
     //% block="subcrible_topic :| Topic: %topic |Message: % message "
-	 export function subcrible_publish (topic:string){
+	 export function subcrible_publish (topic:string,message:string){
 		 
        
         obloqWriteString("|4|1|3|" + topic + "|" + message + "|\r")
