@@ -296,81 +296,7 @@ namespace Obloq_http {
         return wInfo[myInfo][2]
     }
 
-    /**
-     * connect to https://openweathermap.org/ to get the weather information
-     * You have to enter the City ID and your access key of the website
-     * 連接到 https://openweathermap.org/ 取得氣象資訊
-     * 你必須輸入城市編號以及你在這個網站註冊取得的存取密碼才能查詢該城市的氣象資訊
-     * @param myID to myID ,eg: "City Number"
-     * @param myKey to myKey ,eg: "access key"
-    */
-    //% weight=96 group="02_Weather"
-    //% blockId=setWeatherHttp blockGap=5
-    //% block="set city ID to get the weather information: %myID | OpenWeatherMap key: %myKey"
-    export function setWeatherHttp(myID: string, myKey: string): void {
-        Obloq_serial_init()
-        basic.showLeds(`
-        . . . . .
-        . . . . .
-        . # # # .
-        . . . . .
-        . . . . .
-        `)
-        cityID = myID
-        weatherKey = myKey
-        let item = ""
-        let returnCode = ""
-        let tempNumber = 0
-        let tempStr = ""
-        let myUrl = "http://api.openweathermap.org:80/data/2.5/weather?id=" + cityID + "&appid=" + weatherKey
-        serial.readString()
-        obloqWriteString("|3|1|" + myUrl + "|\r")
-        for (let i = 0; i < 3; i++) {
-            returnCode = serial.readUntil("|")
-        }
-        if (returnCode == "200") {
-            for (let i = 0; i < wInfo.length; i++) {
-                item = serial.readUntil(":")
-                while (item.indexOf(wInfo[i][1]) < 0) {
-                    item = serial.readUntil(":")
-                }
-                item = serial.readUntil(",")
-                switch (wInfo[i][3]) {
-                    case "s":
-                        wInfo[i][2] = item.substr(1, item.length - 2)
-                        break
-                    case "k":
-                        if (item.indexOf("}") != -1) {
-                            item = item.substr(0, item.length - 1)
-                        }
-                        wInfo[i][2] = "" + Math.round(parseFloat(item) - 273.15)
-                        break
-                    case "n":
-                        if (item.indexOf("}") != -1) {
-                            item = item.substr(0, item.length - 1)
-                        }
-                        wInfo[i][2] = item
-                        break
-                    default:
-                        wInfo[i][2] = item.substr(1, item.length - 2)
-                }
-            }
-            let riseTime = parseFloat(wInfo[7][2])
-            let setTime = parseFloat(wInfo[8][2])
-            let timeZone = parseFloat(wInfo[9][2])
-            riseTime += timeZone
-            setTime += timeZone
-            wInfo[7][2] = getTimeStr(riseTime)
-            wInfo[8][2] = getTimeStr(setTime)
-            basic.showIcon(IconNames.Yes)
-        }
-        else {
-            for (let i = 0; i < wInfo.length; i++) {
-                wInfo[i][2] = ""
-            }
-            basic.showIcon(IconNames.No)
-        }
-    }
+
 
     /**
      * connect to https://thingspeak.com/ to store the data from micro:bit
@@ -463,11 +389,11 @@ namespace Obloq_http {
 		 
 		 
      } 
-  //% weight=88 group="06_subcrible_publish"
-    //% blockId=subcrible_topic  blockGap=5
+     //% weight=80 group="06_topic"
+    //% blockId=subcrible_publish blockGap=5
     //% expandableArgumentMode"toggle" inlineInputMode=inline
-    //% block="subcrible_topic :| Topic: %topic |Message: % message "
-    
+    //% block="topic :| name: %topic| message: %message "
+
 	 export function subcrible_publish (topic:string,message:string){
 		 
        
