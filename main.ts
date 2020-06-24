@@ -466,10 +466,10 @@ namespace Obloq_http {
   //% weight=89 group="05_subcrible"
     //% blockId=subcrible_topic  blockGap=5
     //% expandableArgumentMode"toggle" inlineInputMode=inline
-    //% block="subcrible_topic :| server address: %address| Port: %port |User: %user|Password: %password_user "
-	 export function subcrible (address:string, port:number,user:string,password_user:string){
+    //% block="subcrible_topic :| Topic: %Topic "
+	 export function subcrible (Topic:string){
 		 
-        obloqWriteString("|4|1|1|" + address + "|" + port + "|" + user + "|" + password_user + "|\r")
+        obloqWriteString("|4|1|2|" + Topic + "|\r")
         
          basic.showIcon(IconNames.Yes)
        
