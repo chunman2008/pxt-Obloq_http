@@ -397,7 +397,7 @@ namespace Obloq_http {
 
 	 export function subcrible_publish (topic:string){
         Obloq_serial_init()
-        obloqWriteString("|4|1|2|" + topic + "|\r")
+        obloqWriteString("|4|1|2|" + <string>topic + "|\r")
 
 
          basic.showIcon(IconNames.Yes)
