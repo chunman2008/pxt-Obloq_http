@@ -5,7 +5,43 @@
 //% weight=10 color=#096670 icon="\uf1eb" block="Obloq_http"
 //% groups=["04_IFTTT","03_ThingSpeak", "02_Weather", "01_System"]
 
-let OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
+let OBLOQ_SERIAL_INIT = OBLOQ_BOOL_TYPE_IS_FALSE
+    let OBLOQ_SERIAL_TX = SerialPin.P2
+    let OBLOQ_SERIAL_RX = SerialPin.P1
+    //wifi
+    let OBLOQ_WIFI_SSID = OBLOQ_STR_TYPE_IS_NONE
+    let OBLOQ_WIFI_PASSWORD = OBLOQ_STR_TYPE_IS_NONE
+    let OBLOQ_WIFI_IP = "0.0.0.0"
+    //mqtt
+    let OBLOQ_MQTT_PORT = 0
+    let OBLOQ_MQTT_SERVER = OBLOQ_STR_TYPE_IS_NONE
+    let OBLOQ_MQTT_PWD = OBLOQ_STR_TYPE_IS_NONE
+    let OBLOQ_MQTT_ID = OBLOQ_STR_TYPE_IS_NONE
+    let OBLOQ_MQTT_TOPIC = [["x", "false"], ["x", "false"], ["x", "false"], ["x", "false"], ["x", "false"]]
+    //http
+    let OBLOQ_HTTP_IP = OBLOQ_STR_TYPE_IS_NONE
+    let OBLOQ_HTTP_PORT = 8080
+    let OBLOQ_HTTP_BUSY = OBLOQ_BOOL_TYPE_IS_FALSE
+    //state
+    let OBLOQ_WIFI_CONNECTED = OBLOQ_BOOL_TYPE_IS_FALSE
+    let OBLOQ_WIFI_CONNECT_FIRST = OBLOQ_BOOL_TYPE_IS_TRUE
+    let OBLOQ_MQTT_INIT = OBLOQ_BOOL_TYPE_IS_FALSE
+    let OBLOQ_HTTP_INIT = OBLOQ_BOOL_TYPE_IS_FALSE
+    //callback
+    let OBLOQ_MQTT_CB: Action[] = [null, null, null, null, null]
+    //commands
+    let OBLOQ_ANSWER_CMD = OBLOQ_STR_TYPE_IS_NONE
+    let OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
+    let OBLOQ_WRONG_TYPE = OBLOQ_STR_TYPE_IS_NONE
+    //animation
+    let OBLOQ_WIFI_ICON = 1
+    let OBLOQ_MQTT_ICON = 1
+    //event
+    let OBLOQ_MQTT_EVENT = OBLOQ_BOOL_TYPE_IS_FALSE
+    //mode
+    let OBLOQ_WORKING_MODE_IS_MQTT = OBLOQ_BOOL_TYPE_IS_FALSE
+    let OBLOQ_WORKING_MODE_IS_HTTP = OBLOQ_BOOL_TYPE_IS_FALSE
+    let OBLOQ_WORKING_MODE_IS_STOP = OBLOQ_BOOL_TYPE_IS_TRUE
 
 namespace Obloq_http {
 
