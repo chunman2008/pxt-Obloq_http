@@ -472,7 +472,7 @@ enum TOPIC {
  *Obloq implementation method.
  */
 //% weight=10 color=#008B00 icon="\uf1eb" block="Obloq"
-namespace Obloq {
+
 
     //serial
     let OBLOQ_SERIAL_INIT = OBLOQ_BOOL_TYPE_IS_FALSE
@@ -2129,4 +2129,3 @@ namespace Obloq {
 
 	
 	
-}
