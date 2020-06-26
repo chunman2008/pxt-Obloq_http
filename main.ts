@@ -608,7 +608,7 @@ function onEvent() {
     //% weight=76 group="08_callback"
     //% blockGap=5
     //% blockId=obloq_mqtt_callback_user_more block=" |received"
-    //% block="receive :| name: %topic |Message: %cb"
+    //% block="receive :| name: %topic "
 
     export function Obloq_mqtt_callback_user_more(topic: string, cb: (message: string) => void) {
 
