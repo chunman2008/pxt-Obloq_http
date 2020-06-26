@@ -576,7 +576,7 @@ namespace Obloq_http {
 }
 
 void obloqEventOn(){
-    uBit.serial.eventOn(ManagedString('\r'), MicroBitSerialMode::ASYNC);
+    uBit.serial.eventOn(ManagedString('\r'), MicroBitSerialMode::ASYNC)
 }
 
 function onEvent() {
@@ -592,8 +592,8 @@ function onEvent() {
      * This is an MQTT listener callback function, which is very important.
      * The specific use method can refer to "example/ObloqMqtt.ts"
     */
-    //% weight=180
-    //% blockGap=60
+    //% weight=76 group="08_callback"
+    //% blockGap=5
     //% blockId=obloq_mqtt_callback_user_more block=" |received"
     //% block="receive :| name: %topic |Message: %cb"
 
