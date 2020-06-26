@@ -2,22 +2,24 @@
  *Obloq implementation method.
  ................
  */
-
+const OBLOQ_STR_TYPE_IS_NONE = ""
+const OBLOQ_BOOL_TYPE_IS_TRUE = true
+const OBLOQ_BOOL_TYPE_IS_FALSE = false
 let OBLOQ_SERIAL_INIT = false
 let OBLOQ_SERIAL_TX = SerialPin.P2
 let OBLOQ_SERIAL_RX = SerialPin.P1
 //wifi
-let OBLOQ_WIFI_SSID = null
-let OBLOQ_WIFI_PASSWORD = null  
+let OBLOQ_WIFI_SSID = OBLOQ_STR_TYPE_IS_NONE
+let OBLOQ_WIFI_PASSWORD = OBLOQ_STR_TYPE_IS_NONE  
 let OBLOQ_WIFI_IP = "0.0.0.0"
 //mqtt
 let OBLOQ_MQTT_PORT = 0
-let OBLOQ_MQTT_SERVER = null
-let OBLOQ_MQTT_PWD = null
-let OBLOQ_MQTT_ID = null
+let OBLOQ_MQTT_SERVER = OBLOQ_STR_TYPE_IS_NONE
+let OBLOQ_MQTT_PWD = OBLOQ_STR_TYPE_IS_NONE
+let OBLOQ_MQTT_ID = OBLOQ_STR_TYPE_IS_NONE
 let OBLOQ_MQTT_TOPIC = [["x", "false"], ["x", "false"], ["x", "false"], ["x", "false"], ["x", "false"]]
 //http
-let OBLOQ_HTTP_IP = null
+let OBLOQ_HTTP_IP = OBLOQ_STR_TYPE_IS_NONE
 let OBLOQ_HTTP_PORT = 8080
 let OBLOQ_HTTP_BUSY = false
 //state
@@ -28,9 +30,9 @@ let OBLOQ_HTTP_INIT = false
 //callback
 let OBLOQ_MQTT_CB: Action[] = [null, null, null, null, null]
 //commands
-let OBLOQ_ANSWER_CMD = null
-let OBLOQ_ANSWER_CONTENT = null
-let OBLOQ_WRONG_TYPE = null
+let OBLOQ_ANSWER_CMD = OBLOQ_STR_TYPE_IS_NONE
+let OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
+let OBLOQ_WRONG_TYPE = OBLOQ_STR_TYPE_IS_NONE
 //
 let OBLOQ_WIFI_ICON = 1
 let OBLOQ_MQTT_ICON = 1
@@ -482,7 +484,7 @@ namespace Obloq_http {
 
     if (item.indexOf("|4|1|1|1|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "MqttConneted"
-        OBLOQ_ANSWER_CONTENT = null
+        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
         return
     } else if (item.indexOf("|4|1|1|2|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "MqttConnectFailure"
@@ -490,32 +492,32 @@ namespace Obloq_http {
         return
     } else if (item.indexOf("|4|1|2|1|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "SubOk"
-        OBLOQ_ANSWER_CONTENT = null
+        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
         return
     } else if (item.indexOf("|4|1|2|2|1|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "SubCeiling"
-        OBLOQ_ANSWER_CONTENT = null
+        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
         return
     } else if (item.indexOf("|4|1|2|2|2|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "SubFailure"
-        OBLOQ_ANSWER_CONTENT = null
+        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
         return
     } else if (item.indexOf("|4|1|3|1|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "PulishOk"
-        OBLOQ_ANSWER_CONTENT = null
+        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
         return
     } else if (item.indexOf("|4|1|3|2|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "PulishFailure"
-        OBLOQ_ANSWER_CONTENT = null
+        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
         OBLOQ_WRONG_TYPE = "mqtt pulish failure"
         return
     } else if (item.indexOf("|4|1|4|1|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "MqttDisconnected"
-        OBLOQ_ANSWER_CONTENT = null
+        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
         return
     } else if (item.indexOf("|4|1|4|2|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "MqttDisconnectFailure"
-        OBLOQ_ANSWER_CONTENT = null
+        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
         return
     } else if (item.indexOf("|4|1|5|") != -1) {//|4|1|5|topic|message|
         let str = item.substr(7, size - 2 - 7)
@@ -532,19 +534,19 @@ namespace Obloq_http {
         return
     } else if (item.indexOf("|4|1|6|1|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "UnSubOk"
-        OBLOQ_ANSWER_CONTENT = null
+        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
         return
     } else if (item.indexOf("|4|1|6|2|1|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "UnSubFailure"
-        OBLOQ_ANSWER_CONTENT = null
+        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
         return
     } else if (item.indexOf("|4|1|6|2|2|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "UnSubFailure"
-        OBLOQ_ANSWER_CONTENT = null
+        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
         return
     } else if (item.indexOf("|1|1|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "PingOk"
-        OBLOQ_ANSWER_CONTENT = null
+        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
         return
     } else if (item.indexOf("|1|2|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "GetVersion"
@@ -558,14 +560,14 @@ namespace Obloq_http {
         return
     } else if (item.indexOf("|2|1|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "WifiDisconnect"
-        OBLOQ_ANSWER_CONTENT = null
+        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
         if (OBLOQ_MQTT_INIT || OBLOQ_HTTP_INIT || OBLOQ_WIFI_CONNECTED) {
             OBLOQ_WRONG_TYPE = "wifi disconnect"
         }
         return
     } else if (item.indexOf("|2|2|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "WifiConnecting"
-        OBLOQ_ANSWER_CONTENT = null
+        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
         return
     } else if (item.indexOf("|2|3|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "WifiConnected"
@@ -573,7 +575,7 @@ namespace Obloq_http {
         return
     } else if (item.indexOf("|2|4|", 0) != -1) {
         OBLOQ_ANSWER_CMD = "WifiConnectFailure"
-        OBLOQ_ANSWER_CONTENT = null
+        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
         return
     } else if (item.indexOf("|3|", 0) != -1) {//|3|errcode|message|
         let str = item.substr(3, size - 2 - 3)
@@ -613,7 +615,7 @@ function onEvent() {
         const packet = new PacketaMqtt()
         packet.message = OBLOQ_ANSWER_CONTENT
         cb(packet.message)
-        basic.showString(cb)
+        basic.showString(packet.message)
 
     }
 
