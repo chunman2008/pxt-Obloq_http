@@ -614,7 +614,7 @@ function onEvent() {
 
         const packet = new PacketaMqtt()
         packet.message = OBLOQ_ANSWER_CONTENT
-        cb(packet.message)
+  
         basic.showString(packet.message)
 
     }
