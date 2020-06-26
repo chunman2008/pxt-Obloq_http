@@ -9,7 +9,7 @@
     "files": [
         "README.md",
       "main.ts",
-      "main.cpp"
+      "main.cpp",
         "_locales/zh-tw/Obloq_http-strings.json"
     ],
     "public": true
