@@ -460,19 +460,7 @@ namespace Obloq_http {
          basic.showIcon(IconNames.Yes)
        
    }
-   //% weight=79   group="08_receive"
-    //% blockId=receive blockGap=5
-    //% expandableArgumentMode"toggle" inlineInputMode=inline
-    //% block="receive :| name: %topic |Message: %message"
 
-    export function publish (topic:string,message:string){
-        Obloq_serial_init()
-    
-        obloqWriteString("|4|1|3|" + topic + "|" + message + "|\r")
-
-         basic.showIcon(IconNames.Yes)
-       
-   }
 
 
    function Obloq_serial_recevice(): void {
