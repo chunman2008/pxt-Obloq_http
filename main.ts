@@ -486,39 +486,7 @@ namespace Obloq_http {
         OBLOQ_ANSWER_CMD = "MqttConneted"
         OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
         return
-    } else if (item.indexOf("|4|1|1|2|", 0) != -1) {
-        OBLOQ_ANSWER_CMD = "MqttConnectFailure"
-        OBLOQ_ANSWER_CONTENT = item.substr(9, size - 2 - 9)
-        return
-    } else if (item.indexOf("|4|1|2|1|", 0) != -1) {
-        OBLOQ_ANSWER_CMD = "SubOk"
-        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
-        return
-    } else if (item.indexOf("|4|1|2|2|1|", 0) != -1) {
-        OBLOQ_ANSWER_CMD = "SubCeiling"
-        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
-        return
-    } else if (item.indexOf("|4|1|2|2|2|", 0) != -1) {
-        OBLOQ_ANSWER_CMD = "SubFailure"
-        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
-        return
-    } else if (item.indexOf("|4|1|3|1|", 0) != -1) {
-        OBLOQ_ANSWER_CMD = "PulishOk"
-        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
-        return
-    } else if (item.indexOf("|4|1|3|2|", 0) != -1) {
-        OBLOQ_ANSWER_CMD = "PulishFailure"
-        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
-        OBLOQ_WRONG_TYPE = "mqtt pulish failure"
-        return
-    } else if (item.indexOf("|4|1|4|1|", 0) != -1) {
-        OBLOQ_ANSWER_CMD = "MqttDisconnected"
-        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
-        return
-    } else if (item.indexOf("|4|1|4|2|", 0) != -1) {
-        OBLOQ_ANSWER_CMD = "MqttDisconnectFailure"
-        OBLOQ_ANSWER_CONTENT = OBLOQ_STR_TYPE_IS_NONE
-        return
+   
     } else if (item.indexOf("|4|1|5|") != -1) {//|4|1|5|topic|message|
         let str = item.substr(7, size - 2 - 7)
         let num = str.indexOf("|")
@@ -615,6 +583,7 @@ function onEvent() {
         const packet = new PacketaMqtt()
         packet.message = OBLOQ_ANSWER_CONTENT
   
+        basic.showString("123")
         basic.showString(packet.message)
 
     }
