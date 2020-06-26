@@ -575,8 +575,8 @@ namespace Obloq_http {
     }
 }
 
-void obloqEventOn(){
-    uBit.serial.eventOn(ManagedString('\r'), MicroBitSerialMode::ASYNC)
+function obloqEventOn(): void {
+    return
 }
 
 function onEvent() {
