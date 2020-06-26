@@ -46,6 +46,12 @@ let OBLOQ_WORKING_MODE_IS_STOP = true
 //% groups=["04_IFTTT","03_ThingSpeak", "02_Weather", "01_System"]
 
 namespace Obloq_http {
+    export class PacketaMqtt {
+        /**
+         * Obloq receives the message content.
+         */
+        public message: string;
+    }
 
     let wInfo: string[][] = [
         ["weather", "main", "", "s"],
@@ -464,6 +470,9 @@ namespace Obloq_http {
    }
 
 
+   function obloqforevers(a: Action): void {
+    return
+}
 
    function Obloq_serial_recevice(): void {
 
@@ -601,7 +610,10 @@ function onEvent() {
 
     export function Obloq_mqtt_callback_user_more(topic: string, cb: (message: string) => void) {
 
-        basic.showString(OBLOQ_ANSWER_CONTENT)
+        const packet = new PacketaMqtt()
+        packet.message = OBLOQ_ANSWER_CONTENT
+        cb(packet.message)
+        basic.showString(cb)
 
     }
 
